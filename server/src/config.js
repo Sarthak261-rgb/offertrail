@@ -18,4 +18,6 @@ export const config = Object.freeze({
   jwtSecret: process.env.JWT_SECRET,
   sessionDays: 7,
   clientUrl: process.env.CLIENT_URL ?? 'http://localhost:5173',
+  // Create the demo account on startup if it's missing (hosts without a shell for `npm run seed`).
+  seedDemo: process.env.SEED_DEMO === 'true',
 });

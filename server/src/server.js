@@ -1,8 +1,14 @@
 import { createApp } from './app.js';
 import { config } from './config.js';
 import { connectDB, disconnectDB } from './db.js';
+import { ensureDemoData } from './demo/demoData.js';
 
 await connectDB(config.mongoUri);
+
+if (config.seedDemo) {
+  const created = await ensureDemoData();
+  if (created) console.log(`Created demo account with ${created} applications`);
+}
 
 const server = createApp().listen(config.port, () => {
   console.log(`API listening on http://localhost:${config.port}`);

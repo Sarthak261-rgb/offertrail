@@ -106,7 +106,7 @@ npm start        # with NODE_ENV=production, serves API + client on one port
 1. Create a free Atlas cluster and copy its connection string.
 2. On Render, choose **New → Blueprint** and select this repo. It uses [render.yaml](render.yaml).
 3. Set `MONGODB_URI` when prompted. `JWT_SECRET` is generated automatically.
-4. Optional: seed the demo account by running `npm run seed` locally with `MONGODB_URI` pointing at Atlas.
+4. `SEED_DEMO=true` (set in `render.yaml`) creates the demo account on first start, because Render's free tier has no shell for `npm run seed`.
 
 ## API Reference
 
