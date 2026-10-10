@@ -2,11 +2,9 @@
 
 > Track every job application on a Kanban board, never miss a follow-up, and see which channels actually get you interviews.
 
-![CI](https://github.com/<your-username>/offertrail/actions/workflows/ci.yml/badge.svg)
+[![CI](https://github.com/Sarthak261-rgb/offertrail/actions/workflows/ci.yml/badge.svg)](https://github.com/Sarthak261-rgb/offertrail/actions/workflows/ci.yml)
 
-**Live demo:** `<add Render URL>` · **Demo login:** `demo@offertrail.dev` / `demo1234` (the login page has a "Fill in demo account" button)
-
-<!-- Add screenshots after deploying: docs/screenshots/board.png, stats.png, detail.png -->
+**Demo login** (after `npm run seed`): `demo@offertrail.dev` / `demo1234`. The login page has a "Fill in demo account" button.
 
 ---
 
@@ -71,7 +69,7 @@ flowchart LR
 
 ### Installation
 ```bash
-git clone https://github.com/<your-username>/offertrail.git
+git clone https://github.com/Sarthak261-rgb/offertrail.git
 cd offertrail
 npm install
 cp server/.env.example server/.env   # then set MONGODB_URI and JWT_SECRET
