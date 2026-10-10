@@ -1,8 +1,18 @@
 import { toDateInput, todayInput } from './format.js';
 
 export const FORM_FIELDS = [
-  'company', 'role', 'location', 'jobUrl', 'status', 'source', 'priority',
-  'appliedAt', 'followUpAt', 'salaryMin', 'salaryMax', 'notes',
+  'company',
+  'role',
+  'location',
+  'jobUrl',
+  'status',
+  'source',
+  'priority',
+  'appliedAt',
+  'followUpAt',
+  'salaryMin',
+  'salaryMax',
+  'notes',
 ];
 
 /** API document → controlled-input values (no nulls, dates as yyyy-mm-dd). */
@@ -42,5 +52,8 @@ export function validateApplication(values) {
 /** Form values → request body. Empty strings are sent as-is; the API treats them as "no value". */
 export const toPayload = (values) =>
   Object.fromEntries(
-    FORM_FIELDS.map((key) => [key, typeof values[key] === 'string' ? values[key].trim() : values[key]]),
+    FORM_FIELDS.map((key) => [
+      key,
+      typeof values[key] === 'string' ? values[key].trim() : values[key],
+    ]),
   );

@@ -1,6 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link, useOutletContext, useSearchParams } from 'react-router-dom';
-import { EmptyState, ErrorState, PageSpinner, PriorityTag, StatusBadge } from '../components/ui.jsx';
+import {
+  EmptyState,
+  ErrorState,
+  PageSpinner,
+  PriorityTag,
+  StatusBadge,
+} from '../components/ui.jsx';
 import { useApplicationList } from '../hooks/useApplications.js';
 import { useDebouncedValue } from '../hooks/useDebouncedValue.js';
 import { PRIORITIES, SORT_OPTIONS, SOURCE_LABELS, SOURCES, STATUSES } from '../utils/constants.js';
@@ -140,30 +146,53 @@ export function ListPage() {
           <table className="w-full text-left text-sm">
             <thead className="border-b border-slate-200 bg-slate-50 text-xs uppercase tracking-wide text-slate-500">
               <tr>
-                <th scope="col" className="px-4 py-3 font-medium">Company / role</th>
-                <th scope="col" className="px-4 py-3 font-medium">Status</th>
-                <th scope="col" className="hidden px-4 py-3 font-medium md:table-cell">Source</th>
-                <th scope="col" className="hidden px-4 py-3 font-medium lg:table-cell">Salary</th>
-                <th scope="col" className="hidden px-4 py-3 font-medium sm:table-cell">Applied</th>
-                <th scope="col" className="hidden px-4 py-3 font-medium md:table-cell">Priority</th>
+                <th scope="col" className="px-4 py-3 font-medium">
+                  Company / role
+                </th>
+                <th scope="col" className="px-4 py-3 font-medium">
+                  Status
+                </th>
+                <th scope="col" className="hidden px-4 py-3 font-medium md:table-cell">
+                  Source
+                </th>
+                <th scope="col" className="hidden px-4 py-3 font-medium lg:table-cell">
+                  Salary
+                </th>
+                <th scope="col" className="hidden px-4 py-3 font-medium sm:table-cell">
+                  Applied
+                </th>
+                <th scope="col" className="hidden px-4 py-3 font-medium md:table-cell">
+                  Priority
+                </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
               {data.data.map((app) => (
                 <tr key={app._id} className="hover:bg-slate-50">
                   <td className="px-4 py-3">
-                    <Link to={`/applications/${app._id}`} className="font-medium text-slate-900 hover:text-indigo-600">
+                    <Link
+                      to={`/applications/${app._id}`}
+                      className="font-medium text-slate-900 hover:text-indigo-600"
+                    >
                       {app.company}
                     </Link>
                     <p className="text-slate-500">{app.role}</p>
                   </td>
-                  <td className="px-4 py-3"><StatusBadge status={app.status} /></td>
-                  <td className="hidden px-4 py-3 text-slate-600 md:table-cell">{SOURCE_LABELS[app.source]}</td>
+                  <td className="px-4 py-3">
+                    <StatusBadge status={app.status} />
+                  </td>
+                  <td className="hidden px-4 py-3 text-slate-600 md:table-cell">
+                    {SOURCE_LABELS[app.source]}
+                  </td>
                   <td className="hidden px-4 py-3 whitespace-nowrap text-slate-600 lg:table-cell">
                     {formatSalary(app.salaryMin, app.salaryMax)}
                   </td>
-                  <td className="hidden px-4 py-3 whitespace-nowrap text-slate-600 sm:table-cell">{formatDate(app.appliedAt)}</td>
-                  <td className="hidden px-4 py-3 md:table-cell"><PriorityTag priority={app.priority} /></td>
+                  <td className="hidden px-4 py-3 whitespace-nowrap text-slate-600 sm:table-cell">
+                    {formatDate(app.appliedAt)}
+                  </td>
+                  <td className="hidden px-4 py-3 md:table-cell">
+                    <PriorityTag priority={app.priority} />
+                  </td>
                 </tr>
               ))}
             </tbody>

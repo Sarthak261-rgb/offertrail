@@ -12,7 +12,9 @@ const NAV_ITEMS = [
 
 const navClass = ({ isActive }) =>
   `rounded-lg px-3 py-1.5 text-sm font-medium transition ${
-    isActive ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+    isActive
+      ? 'bg-indigo-50 text-indigo-700'
+      : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
   }`;
 
 export function Layout() {

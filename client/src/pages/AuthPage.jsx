@@ -63,20 +63,43 @@ export function AuthPage({ mode }) {
 
           {isRegister && (
             <div>
-              <label htmlFor="name" className="label">Name</label>
-              <input id="name" name="name" className="input" autoComplete="name" value={values.name} onChange={update} required />
+              <label htmlFor="name" className="label">
+                Name
+              </label>
+              <input
+                id="name"
+                name="name"
+                className="input"
+                autoComplete="name"
+                value={values.name}
+                onChange={update}
+                required
+              />
               {errors.name && <p className="mt-1 text-xs text-red-600">{errors.name}</p>}
             </div>
           )}
 
           <div>
-            <label htmlFor="email" className="label">Email</label>
-            <input id="email" name="email" type="email" className="input" autoComplete="email" value={values.email} onChange={update} required />
+            <label htmlFor="email" className="label">
+              Email
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              className="input"
+              autoComplete="email"
+              value={values.email}
+              onChange={update}
+              required
+            />
             {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email}</p>}
           </div>
 
           <div>
-            <label htmlFor="password" className="label">Password</label>
+            <label htmlFor="password" className="label">
+              Password
+            </label>
             <input
               id="password"
               name="password"

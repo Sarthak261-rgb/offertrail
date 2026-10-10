@@ -2,7 +2,13 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { ApplicationFormModal } from '../components/ApplicationFormModal.jsx';
-import { EmptyState, ErrorState, PageSpinner, PriorityTag, StatusBadge } from '../components/ui.jsx';
+import {
+  EmptyState,
+  ErrorState,
+  PageSpinner,
+  PriorityTag,
+  StatusBadge,
+} from '../components/ui.jsx';
 import {
   useApplication,
   useDeleteApplication,
@@ -34,7 +40,11 @@ export function ApplicationDetailPage() {
       <EmptyState
         title="Application not found"
         description="It may have been deleted."
-        action={<Link to="/" className="btn btn-secondary">Back to board</Link>}
+        action={
+          <Link to="/" className="btn btn-secondary">
+            Back to board
+          </Link>
+        }
       />
     ) : (
       <ErrorState error={error} onRetry={refetch} />
@@ -66,7 +76,9 @@ export function ApplicationDetailPage() {
 
   return (
     <>
-      <Link to="/" className="text-sm text-slate-500 hover:text-indigo-600">← Back to board</Link>
+      <Link to="/" className="text-sm text-slate-500 hover:text-indigo-600">
+        ← Back to board
+      </Link>
 
       <div className="mt-3 mb-6 flex flex-wrap items-start justify-between gap-4">
         <div>
@@ -78,8 +90,15 @@ export function ApplicationDetailPage() {
           <p className="mt-1 text-slate-600">{app.role}</p>
         </div>
         <div className="flex gap-2">
-          <button type="button" className="btn btn-secondary" onClick={() => setEditing(true)}>Edit</button>
-          <button type="button" className="btn btn-danger" onClick={handleDelete} disabled={remove.isPending}>
+          <button type="button" className="btn btn-secondary" onClick={() => setEditing(true)}>
+            Edit
+          </button>
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={handleDelete}
+            disabled={remove.isPending}
+          >
             Delete
           </button>
         </div>
@@ -115,12 +134,19 @@ export function ApplicationDetailPage() {
               <Detail label="Source">{SOURCE_LABELS[app.source]}</Detail>
               <Detail label="Applied on">{formatDate(app.appliedAt)}</Detail>
               <Detail label="Follow up">
-                {app.followUpAt ? `${formatDate(app.followUpAt)} · ${describeDue(app.followUpAt)}` : '—'}
+                {app.followUpAt
+                  ? `${formatDate(app.followUpAt)} · ${describeDue(app.followUpAt)}`
+                  : '—'}
               </Detail>
               <Detail label="Salary range">{formatSalary(app.salaryMin, app.salaryMax)}</Detail>
               <Detail label="Job posting">
                 {app.jobUrl ? (
-                  <a href={app.jobUrl} target="_blank" rel="noopener noreferrer" className="break-all text-indigo-600 hover:underline">
+                  <a
+                    href={app.jobUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="break-all text-indigo-600 hover:underline"
+                  >
                     Open posting ↗
                   </a>
                 ) : (
@@ -141,7 +167,9 @@ export function ApplicationDetailPage() {
         </div>
 
         <section className="card h-fit p-5" aria-labelledby="timeline-heading">
-          <h2 id="timeline-heading" className="mb-4 text-sm font-semibold text-slate-700">Timeline</h2>
+          <h2 id="timeline-heading" className="mb-4 text-sm font-semibold text-slate-700">
+            Timeline
+          </h2>
           <ol className="relative space-y-5 border-l border-slate-200 pl-5">
             {history.map((entry, index) => (
               <li key={`${entry.status}-${entry.changedAt}`} className="relative">

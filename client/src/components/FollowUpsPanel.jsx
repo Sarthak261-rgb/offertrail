@@ -10,8 +10,14 @@ export function FollowUpsPanel() {
   if (isPending || isError || followUps.length === 0) return null;
 
   return (
-    <section aria-labelledby="follow-ups-heading" className="card mb-5 border-amber-200 bg-amber-50/60 p-4">
-      <h2 id="follow-ups-heading" className="mb-3 flex items-center gap-2 text-sm font-semibold text-amber-900">
+    <section
+      aria-labelledby="follow-ups-heading"
+      className="card mb-5 border-amber-200 bg-amber-50/60 p-4"
+    >
+      <h2
+        id="follow-ups-heading"
+        className="mb-3 flex items-center gap-2 text-sm font-semibold text-amber-900"
+      >
         🔔 Follow-ups due
         <span className="rounded-full bg-amber-200 px-2 text-xs">{followUps.length}</span>
       </h2>

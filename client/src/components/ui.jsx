@@ -46,7 +46,9 @@ export function StatusBadge({ status }) {
   const meta = STATUS_BY_VALUE[status];
   if (!meta) return null;
   return (
-    <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${meta.badge}`}>
+    <span
+      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${meta.badge}`}
+    >
       {meta.label}
     </span>
   );

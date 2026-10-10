@@ -13,14 +13,50 @@ async function seedFor(userId) {
   await Application.insertMany(
     [
       // linkedin: 3 applied, 1 reached interview
-      { company: 'A', status: 'applied', source: 'linkedin', appliedAt: daysAgo(1), statusHistory: history('applied') },
-      { company: 'B', status: 'interview', source: 'linkedin', appliedAt: daysAgo(2), statusHistory: history('applied', 'interview') },
-      { company: 'C', status: 'rejected', source: 'linkedin', appliedAt: daysAgo(9), statusHistory: history('applied', 'rejected') },
+      {
+        company: 'A',
+        status: 'applied',
+        source: 'linkedin',
+        appliedAt: daysAgo(1),
+        statusHistory: history('applied'),
+      },
+      {
+        company: 'B',
+        status: 'interview',
+        source: 'linkedin',
+        appliedAt: daysAgo(2),
+        statusHistory: history('applied', 'interview'),
+      },
+      {
+        company: 'C',
+        status: 'rejected',
+        source: 'linkedin',
+        appliedAt: daysAgo(9),
+        statusHistory: history('applied', 'rejected'),
+      },
       // referral: 2 applied, both reached interview (one was later rejected)
-      { company: 'D', status: 'offer', source: 'referral', appliedAt: daysAgo(8), statusHistory: history('applied', 'interview', 'offer') },
-      { company: 'E', status: 'rejected', source: 'referral', appliedAt: daysAgo(70), statusHistory: history('applied', 'interview', 'rejected') },
+      {
+        company: 'D',
+        status: 'offer',
+        source: 'referral',
+        appliedAt: daysAgo(8),
+        statusHistory: history('applied', 'interview', 'offer'),
+      },
+      {
+        company: 'E',
+        status: 'rejected',
+        source: 'referral',
+        appliedAt: daysAgo(70),
+        statusHistory: history('applied', 'interview', 'rejected'),
+      },
       // wishlist: not applied yet, excluded from rates and weekly counts
-      { company: 'F', status: 'wishlist', source: 'other', appliedAt: daysAgo(0), statusHistory: history('wishlist') },
+      {
+        company: 'F',
+        status: 'wishlist',
+        source: 'other',
+        appliedAt: daysAgo(0),
+        statusHistory: history('wishlist'),
+      },
     ].map((doc) => ({ ...doc, role: 'Engineer', user: userId })),
   );
 }
@@ -32,7 +68,13 @@ describe('getOverview', () => {
 
     const stats = await getOverview(user._id, NOW);
 
-    expect(stats.byStatus).toEqual({ wishlist: 1, applied: 1, interview: 1, offer: 1, rejected: 2 });
+    expect(stats.byStatus).toEqual({
+      wishlist: 1,
+      applied: 1,
+      interview: 1,
+      offer: 1,
+      rejected: 2,
+    });
     expect(stats.totals).toEqual({
       total: 6,
       applied: 5,

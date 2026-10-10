@@ -21,7 +21,8 @@ const queryClient = new QueryClient({
       staleTime: 30_000,
       refetchOnWindowFocus: false,
       // Retrying a 4xx won't change the answer; retry network and server errors once.
-      retry: (failureCount, error) => !(error.status >= 400 && error.status < 500) && failureCount < 1,
+      retry: (failureCount, error) =>
+        !(error.status >= 400 && error.status < 500) && failureCount < 1,
     },
   },
 });

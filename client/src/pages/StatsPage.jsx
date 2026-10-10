@@ -26,7 +26,9 @@ function BarRow({ label, value, max, display, dotClass }) {
   return (
     <li className="grid grid-cols-[7rem_1fr_auto] items-center gap-3 text-sm sm:grid-cols-[9rem_1fr_auto]">
       <span className="flex items-center gap-2 truncate text-slate-700">
-        {dotClass && <span className={`h-2 w-2 shrink-0 rounded-full ${dotClass}`} aria-hidden="true" />}
+        {dotClass && (
+          <span className={`h-2 w-2 shrink-0 rounded-full ${dotClass}`} aria-hidden="true" />
+        )}
         {label}
       </span>
       <span className="h-2.5 rounded-full bg-slate-100" aria-hidden="true">
@@ -63,7 +65,9 @@ export function StatsPage() {
   return (
     <>
       <h1 className="text-2xl font-bold">Stats</h1>
-      <p className="mb-5 text-sm text-slate-500">How your search is going, computed from your applications.</p>
+      <p className="mb-5 text-sm text-slate-500">
+        How your search is going, computed from your applications.
+      </p>
 
       {totals.total === 0 ? (
         <EmptyState
@@ -78,7 +82,11 @@ export function StatsPage() {
       ) : (
         <div className="space-y-6">
           <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-            <StatTile label="Applied" value={totals.applied} hint={`${byStatus.wishlist} more on wishlist`} />
+            <StatTile
+              label="Applied"
+              value={totals.applied}
+              hint={`${byStatus.wishlist} more on wishlist`}
+            />
             <StatTile label="In progress" value={totals.active} hint="Applied or interviewing" />
             <StatTile
               label="Interview rate"
@@ -89,11 +97,17 @@ export function StatsPage() {
           </div>
 
           <section className="card p-5" aria-labelledby="weekly-heading">
-            <h2 id="weekly-heading" className="font-semibold">Applications per week</h2>
+            <h2 id="weekly-heading" className="font-semibold">
+              Applications per week
+            </h2>
             <p className="mb-4 text-xs text-slate-500">Last 8 weeks, by date applied</p>
             <div className="h-64">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={weekly} margin={{ top: 4, right: 4, bottom: 0, left: -20 }} barCategoryGap="28%">
+                <BarChart
+                  data={weekly}
+                  margin={{ top: 4, right: 4, bottom: 0, left: -20 }}
+                  barCategoryGap="28%"
+                >
                   <CartesianGrid vertical={false} stroke="#e2e8f0" />
                   <XAxis
                     dataKey="weekStart"
@@ -114,10 +128,15 @@ export function StatsPage() {
               </ResponsiveContainer>
             </div>
             <details className="mt-3 text-sm">
-              <summary className="cursor-pointer text-slate-500 hover:text-slate-700">Show as table</summary>
+              <summary className="cursor-pointer text-slate-500 hover:text-slate-700">
+                Show as table
+              </summary>
               <table className="mt-2 w-full max-w-xs text-left">
                 <thead className="text-xs text-slate-500">
-                  <tr><th className="py-1 font-medium">Week of</th><th className="py-1 text-right font-medium">Applications</th></tr>
+                  <tr>
+                    <th className="py-1 font-medium">Week of</th>
+                    <th className="py-1 text-right font-medium">Applications</th>
+                  </tr>
                 </thead>
                 <tbody>
                   {weekly.map((w) => (
@@ -133,7 +152,9 @@ export function StatsPage() {
 
           <div className="grid gap-6 lg:grid-cols-2">
             <section className="card p-5" aria-labelledby="status-heading">
-              <h2 id="status-heading" className="mb-4 font-semibold">Where everything stands</h2>
+              <h2 id="status-heading" className="mb-4 font-semibold">
+                Where everything stands
+              </h2>
               <ul className="space-y-3">
                 {STATUSES.map((status) => (
                   <BarRow
@@ -148,8 +169,12 @@ export function StatsPage() {
             </section>
 
             <section className="card p-5" aria-labelledby="source-heading">
-              <h2 id="source-heading" className="font-semibold">Interview rate by source</h2>
-              <p className="mb-4 text-xs text-slate-500">Share of submitted applications that reached an interview</p>
+              <h2 id="source-heading" className="font-semibold">
+                Interview rate by source
+              </h2>
+              <p className="mb-4 text-xs text-slate-500">
+                Share of submitted applications that reached an interview
+              </p>
               {bySource.length === 0 ? (
                 <p className="text-sm text-slate-400">No submitted applications yet.</p>
               ) : (

@@ -19,7 +19,13 @@ describe('validateApplication', () => {
 
   it('rejects an inverted salary range and a non-URL link', () => {
     const errors = validateApplication(
-      toFormValues({ company: 'A', role: 'B', salaryMin: 900000, salaryMax: 500000, jobUrl: 'careers page' }),
+      toFormValues({
+        company: 'A',
+        role: 'B',
+        salaryMin: 900000,
+        salaryMax: 500000,
+        jobUrl: 'careers page',
+      }),
     );
     expect(Object.keys(errors)).toEqual(['jobUrl', 'salaryMax']);
   });
@@ -45,7 +51,11 @@ describe('<ApplicationForm />', () => {
     await user.click(screen.getByRole('button', { name: 'Save' }));
 
     expect(onSubmit).toHaveBeenCalledWith(
-      expect.objectContaining({ company: 'Northwind Labs', role: 'Frontend Engineer', status: 'interview' }),
+      expect.objectContaining({
+        company: 'Northwind Labs',
+        role: 'Frontend Engineer',
+        status: 'interview',
+      }),
     );
   });
 

@@ -45,7 +45,12 @@ export function KanbanBoard({ cards, onAdd }) {
       {/* Fixed-width columns scroll horizontally until the screen is wide enough to share it. */}
       <div className="-mx-4 flex gap-3 overflow-x-auto px-4 pb-4 sm:mx-0 sm:px-0">
         {STATUSES.map((status) => (
-          <BoardColumn key={status.value} status={status} cards={columns[status.value]} onAdd={onAdd} />
+          <BoardColumn
+            key={status.value}
+            status={status}
+            cards={columns[status.value]}
+            onAdd={onAdd}
+          />
         ))}
       </div>
 

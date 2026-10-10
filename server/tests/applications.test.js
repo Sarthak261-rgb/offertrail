@@ -27,7 +27,11 @@ describe('POST /api/applications', () => {
   it('creates an application with defaults and an initial history entry', async () => {
     const created = await createApplication();
 
-    expect(created).toMatchObject({ status: 'applied', priority: 'medium', company: 'Northwind Labs' });
+    expect(created).toMatchObject({
+      status: 'applied',
+      priority: 'medium',
+      company: 'Northwind Labs',
+    });
     expect(created.statusHistory).toHaveLength(1);
     expect(created.statusHistory[0].status).toBe('applied');
   });
@@ -136,7 +140,9 @@ describe('PATCH /api/applications/:id', () => {
     const created = await createApplication();
 
     expect((await agent.patch(`/api/applications/${created._id}`).send({})).status).toBe(400);
-    expect((await agent.patch('/api/applications/not-an-id').send({ notes: 'x' })).status).toBe(400);
+    expect((await agent.patch('/api/applications/not-an-id').send({ notes: 'x' })).status).toBe(
+      400,
+    );
   });
 });
 
@@ -172,7 +178,11 @@ describe('GET /api/applications/follow-ups', () => {
     await createApplication({ company: 'Overdue', followUpAt: new Date(now - 3 * DAY_MS) });
     await createApplication({ company: 'Today', followUpAt: new Date(now) });
     await createApplication({ company: 'Future', followUpAt: new Date(now + 5 * DAY_MS) });
-    await createApplication({ company: 'Closed', status: 'rejected', followUpAt: new Date(now - DAY_MS) });
+    await createApplication({
+      company: 'Closed',
+      status: 'rejected',
+      followUpAt: new Date(now - DAY_MS),
+    });
     await createApplication({ company: 'No date' });
 
     const res = await agent.get('/api/applications/follow-ups');

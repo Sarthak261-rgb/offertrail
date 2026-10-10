@@ -11,7 +11,11 @@ import {
 export const applicationRouter = Router();
 
 applicationRouter.get('/', validate({ query: listQuerySchema }), applicationController.list);
-applicationRouter.post('/', validate({ body: createApplicationSchema }), applicationController.create);
+applicationRouter.post(
+  '/',
+  validate({ body: createApplicationSchema }),
+  applicationController.create,
+);
 
 // Fixed paths must be registered before /:id, or "board" would be treated as an id.
 applicationRouter.get('/board', applicationController.board);

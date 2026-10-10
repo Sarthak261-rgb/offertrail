@@ -17,7 +17,12 @@ const authLimiter = rateLimit({
 
 export const authRouter = Router();
 
-authRouter.post('/register', authLimiter, validate({ body: registerSchema }), authController.register);
+authRouter.post(
+  '/register',
+  authLimiter,
+  validate({ body: registerSchema }),
+  authController.register,
+);
 authRouter.post('/login', authLimiter, validate({ body: loginSchema }), authController.login);
 authRouter.post('/logout', authController.logout);
 authRouter.get('/me', requireAuth, authController.me);

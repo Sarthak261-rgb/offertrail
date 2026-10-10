@@ -56,21 +56,29 @@ export function ApplicationForm({ initialValues, onSubmit, onCancel, submitLabel
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="company" className="label">Company *</label>
+          <label htmlFor="company" className="label">
+            Company *
+          </label>
           <input className="input" autoFocus placeholder="Northwind Labs" {...field('company')} />
           {error('company')}
         </div>
         <div>
-          <label htmlFor="role" className="label">Role *</label>
+          <label htmlFor="role" className="label">
+            Role *
+          </label>
           <input className="input" placeholder="Full Stack Developer" {...field('role')} />
           {error('role')}
         </div>
         <div>
-          <label htmlFor="location" className="label">Location</label>
+          <label htmlFor="location" className="label">
+            Location
+          </label>
           <input className="input" placeholder="Remote, Bengaluru…" {...field('location')} />
         </div>
         <div>
-          <label htmlFor="jobUrl" className="label">Job posting URL</label>
+          <label htmlFor="jobUrl" className="label">
+            Job posting URL
+          </label>
           <input className="input" type="url" placeholder="https://" {...field('jobUrl')} />
           {error('jobUrl')}
         </div>
@@ -78,54 +86,102 @@ export function ApplicationForm({ initialValues, onSubmit, onCancel, submitLabel
 
       <div className="grid gap-4 sm:grid-cols-3">
         <div>
-          <label htmlFor="status" className="label">Status</label>
+          <label htmlFor="status" className="label">
+            Status
+          </label>
           <select className="input" {...field('status')}>
-            {STATUSES.map((s) => <option key={s.value} value={s.value}>{s.label}</option>)}
+            {STATUSES.map((s) => (
+              <option key={s.value} value={s.value}>
+                {s.label}
+              </option>
+            ))}
           </select>
         </div>
         <div>
-          <label htmlFor="source" className="label">Source</label>
+          <label htmlFor="source" className="label">
+            Source
+          </label>
           <select className="input" {...field('source')}>
-            {SOURCES.map((s) => <option key={s.value} value={s.value}>{s.label}</option>)}
+            {SOURCES.map((s) => (
+              <option key={s.value} value={s.value}>
+                {s.label}
+              </option>
+            ))}
           </select>
         </div>
         <div>
-          <label htmlFor="priority" className="label">Priority</label>
+          <label htmlFor="priority" className="label">
+            Priority
+          </label>
           <select className="input" {...field('priority')}>
-            {PRIORITIES.map((p) => <option key={p.value} value={p.value}>{p.label}</option>)}
+            {PRIORITIES.map((p) => (
+              <option key={p.value} value={p.value}>
+                {p.label}
+              </option>
+            ))}
           </select>
         </div>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="appliedAt" className="label">Applied on</label>
+          <label htmlFor="appliedAt" className="label">
+            Applied on
+          </label>
           <input className="input" type="date" {...field('appliedAt')} />
           {error('appliedAt')}
         </div>
         <div>
-          <label htmlFor="followUpAt" className="label">Follow up on</label>
+          <label htmlFor="followUpAt" className="label">
+            Follow up on
+          </label>
           <input className="input" type="date" {...field('followUpAt')} />
         </div>
         <div>
-          <label htmlFor="salaryMin" className="label">Min salary (₹ / year)</label>
-          <input className="input" type="number" min="0" step="10000" placeholder="600000" {...field('salaryMin')} />
+          <label htmlFor="salaryMin" className="label">
+            Min salary (₹ / year)
+          </label>
+          <input
+            className="input"
+            type="number"
+            min="0"
+            step="10000"
+            placeholder="600000"
+            {...field('salaryMin')}
+          />
           {error('salaryMin')}
         </div>
         <div>
-          <label htmlFor="salaryMax" className="label">Max salary (₹ / year)</label>
-          <input className="input" type="number" min="0" step="10000" placeholder="900000" {...field('salaryMax')} />
+          <label htmlFor="salaryMax" className="label">
+            Max salary (₹ / year)
+          </label>
+          <input
+            className="input"
+            type="number"
+            min="0"
+            step="10000"
+            placeholder="900000"
+            {...field('salaryMax')}
+          />
           {error('salaryMax')}
         </div>
       </div>
 
       <div>
-        <label htmlFor="notes" className="label">Notes</label>
-        <textarea className="input min-h-24" placeholder="Recruiter name, interview prep, questions to ask…" {...field('notes')} />
+        <label htmlFor="notes" className="label">
+          Notes
+        </label>
+        <textarea
+          className="input min-h-24"
+          placeholder="Recruiter name, interview prep, questions to ask…"
+          {...field('notes')}
+        />
       </div>
 
       <div className="flex justify-end gap-2 pt-2">
-        <button type="button" className="btn btn-secondary" onClick={onCancel}>Cancel</button>
+        <button type="button" className="btn btn-secondary" onClick={onCancel}>
+          Cancel
+        </button>
         <button type="submit" className="btn btn-primary" disabled={submitting}>
           {submitting ? 'Saving…' : submitLabel}
         </button>

@@ -21,7 +21,9 @@ export function ApplicationFormModal({ open, onClose, application, defaultStatus
     onClose();
   }
 
-  const initialValues = toFormValues(application ?? (defaultStatus ? { status: defaultStatus } : {}));
+  const initialValues = toFormValues(
+    application ?? (defaultStatus ? { status: defaultStatus } : {}),
+  );
 
   return (
     <Modal open={open} onClose={onClose} title={isEdit ? 'Edit application' : 'New application'}>
